@@ -71,13 +71,21 @@ func NewTimeRange(from, to string) TimeRange {
 // Formats Grafana 'From' time spec into absolute printable time
 func (tr TimeRange) FromFormatted() string {
 	n := newNow()
+    location, err := time.LoadLocation("Europe/Moscow")
+    if err == nil {
+        return n.parseTo(tr.From).In(location).Format(time.UnixDate)
+    }
 	return n.parseFrom(tr.From).Format(time.UnixDate)
 }
 
 // Formats Grafana 'To' time spec into absolute printable time
 func (tr TimeRange) ToFormatted() string {
 	n := newNow()
-	return n.parseTo(tr.To).Format(time.UnixDate)
+    location, err := time.LoadLocation("Europe/Moscow")
+    if err == nil {
+        return n.parseTo(tr.To).In(location).Format(time.UnixDate)
+    }
+    return n.parseTo(tr.To).Format(time.UnixDate)
 }
 
 func newNow() now {

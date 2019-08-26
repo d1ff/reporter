@@ -18,9 +18,9 @@ package report
 
 const defaultTemplate = `
 %use square brackets as golang text templating delimiters
-\documentclass{article}
+\documentclass[a4paper,10pt]{article}
 \usepackage{graphicx}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=1cm]{geometry}
 
 \graphicspath{ {images/} }
 \begin{document}

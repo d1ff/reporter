@@ -173,9 +173,12 @@ func (g client) getPanelURL(p Panel, dashName string, t TimeRange) string {
 	} else if p.Is(Text) {
 		values.Add("width", "1000")
 		values.Add("height", "100")
+	} else if p.Is(Table) {
+		values.Add("width", "1000")
+		values.Add("height", strconv.Itoa(p.Gridpos.H * 30 + 10))
 	} else {
 		values.Add("width", "1000")
-		values.Add("height", "500")
+		values.Add("height", strconv.Itoa(p.Gridpos.H * 50 + 10))
 	}
 
 	for k, v := range g.variables {

@@ -41,11 +41,19 @@ func (p PanelType) string() string {
 	}[p]
 }
 
+type GridposS struct {
+    H int
+    W int
+    X int
+    Y int
+}
+
 // Panel represents a Grafana dashboard panel
 type Panel struct {
 	Id    int
 	Type  string
 	Title string
+    Gridpos GridposS
 }
 
 // Row represents a container for Panels
